@@ -57,9 +57,9 @@ window.renderStatistics = function (ctx, players, times) {
     ctx.fillText(players[i], CLOUD_X + barChartPadding + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - GAP * 2);
 
     var rendomNumber = +Math.random().toFixed(1) + 0.1;
-    rendomNumber = (rendomNumber <=  0.4) ? rendomNumber * 2 : rendomNumber;
+    rendomNumber = (rendomNumber <= 0.4) ? rendomNumber * 2 : rendomNumber;
     ctx.fillStyle = (players[i] === 'Вы') ? 'rgba(255, 0, 0, 1)' : 'rgba(0, 0, 255,' + Math.random().toFixed(1) * 2 + ')';
-    ctx.fillRect(CLOUD_X + barChartPadding + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - GAP * 2 - TEXT_HEIGHT  - (times[i] * BAR_HEIGHT) / maxTime, BAR_WIDTH, (times[i] * BAR_HEIGHT) / maxTime);
+    ctx.fillRect(CLOUD_X + barChartPadding + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - GAP * 2 - TEXT_HEIGHT - (times[i] * BAR_HEIGHT) / maxTime, BAR_WIDTH, (times[i] * BAR_HEIGHT) / maxTime);
 
     ctx.fillStyle = '#000000';
     ctx.fillText(Math.floor(times[i]), CLOUD_X + barChartPadding + (BAR_WIDTH + BARS_GAP) * i, CLOUD_Y + CLOUD_HEIGHT - GAP * 2 - TEXT_HEIGHT - (times[i] * BAR_HEIGHT) / maxTime - GAP);
