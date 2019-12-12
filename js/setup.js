@@ -1,7 +1,7 @@
 'use strict';
 
-var USER_DIALOG = document.querySelector('.setup');
-var similarListElement = USER_DIALOG.querySelector('.setup-similar-list');
+var userSetup = document.querySelector('.setup');
+var similarListElement = userSetup.querySelector('.setup-similar-list');
 var similarWizardsTemplate = document.querySelector('#similar-wizard-template')
   .content
   .querySelector('.setup-similar-item');
@@ -39,7 +39,7 @@ var wizards = [
   },
 ];
 
-USER_DIALOG.querySelector('.setup-similar').classList.remove('hidden');
+userSetup.querySelector('.setup-similar').classList.remove('hidden');
 
 var renderWizard = function (w) {
   var wizardElement = similarWizardsTemplate.cloneNode(true);
@@ -58,20 +58,43 @@ for (var i = 0; i < wizards.length; i++) {
 similarListElement.appendChild(fragment);
 
 // Events
-var AVATAR_CONTAINER = document.querySelector('.setup-open');
-var SETUP_CLOSING_BTN = USER_DIALOG.querySelector('.setup-close');
+var setupOpen = document.querySelector('.setup-open');
+var setupClose = userSetup.querySelector('.setup-close');
+var ESC_KEYCODE = 27;
+var ENTER_KEYCODE = 13;
 
-var onAvatarClick = function () {
-  USER_DIALOG.classList.remove('hidden');
-};
-var onClosingBtnClick = function () {
-  USER_DIALOG.classList.add('hidden');
+var onPopupEscPress = function (evt) {
+  if (evt.keyCode === ESC_KEYCODE) {
+    closePopup();
+  }
 };
 
-AVATAR_CONTAINER.addEventListener('click', function (evt) {
-  onAvatarClick();
+var openPopup = function () {
+  userSetup.classList.remove('hidden');
+  document.addEventListener('keydown', onPopupEscPress);
+};
+
+var closePopup = function () {
+  userSetup.classList.add('hidden');
+  document.removeEventLIstener('keydown', onPopupEscPress);
+};
+
+setupOpen.addEventListener('click', function () {
+  openPopup();
 });
 
-SETUP_CLOSING_BTN.addEventListener('click', function (evt) {
-  onClosingBtnClick();
+setupOpen.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    openPopup();
+  }
+});
+
+setupClose.addEventListener('click', function () {
+  closePopup();
+});
+
+setupClose.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    closePopup();
+  }
 });
