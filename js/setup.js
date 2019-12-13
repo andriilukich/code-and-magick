@@ -118,3 +118,21 @@ userNameInput.addEventListener('input', function (evt) {
     target.setCustomValidity(' ');
   }
 });
+
+// Wizard's view change
+var playerSetup = document.querySelector('.setup-player');
+var coatSetup = playerSetup.querySelector('.wizard-coat');
+var eyeSetup = playerSetup.querySelector('.wizard-eyes');
+var fireballSetup = playerSetup.querySelector('.setup-fireball-wrap');
+
+coatSetup.addEventListener('click', function () {
+  coatSetup.style.fill = getRandomItem(coatsColor);
+});
+
+eyeSetup.addEventListener('click', function () {
+  eyeSetup.style.fill = getRandomItem(colorsOfEyes);
+});
+
+fireballSetup.addEventListener('click', function () {
+  fireballSetup.style.backgroundColor = getRandomItem(fireballColor);
+});
