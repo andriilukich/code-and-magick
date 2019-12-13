@@ -98,6 +98,7 @@ setupClose.addEventListener('keydown', function (evt) {
   }
 });
 
+// Form validation
 userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Wizard\'s name must be at least two characters');
