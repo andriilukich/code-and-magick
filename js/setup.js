@@ -10,34 +10,32 @@ var wizardsName = ['Иван', 'Хуан Себастьян', 'Мария', 'К�
 var wizardsSurname = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
 var coatsColor = ['rgb(101, 137, 164)', 'rgb(241, 43, 107)', 'rgb(146, 100, 161)', 'rgb(56, 159, 117)', 'rgb(215, 210, 55)', 'rgb(0, 0, 0)'];
 var colorsOfEyes = ['black', 'red', 'blue', 'yellow', 'green'];
+var fireballColor = ['#ee4830', '#30a8ee', '#5ce6c0', '#e848d5', '#e6e848'];
+var WIZARDS_MAX = 4;
 var fragment = document.createDocumentFragment();
 
-var randomNumber = function (array) {
-  return Math.floor(Math.random() * array.length);
+var getRandomNumber = function (min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
-var wizards = [
-  {
-    name: wizardsName[randomNumber(wizardsName)] + ' ' + wizardsSurname[randomNumber(wizardsSurname)],
-    coatColor: coatsColor[randomNumber(coatsColor)],
-    eyesColor: colorsOfEyes[randomNumber(colorsOfEyes)]
-  },
-  {
-    name: wizardsName[randomNumber(wizardsName)] + ' ' + wizardsSurname[randomNumber(wizardsSurname)],
-    coatColor: coatsColor[randomNumber(coatsColor)],
-    eyesColor: colorsOfEyes[randomNumber(colorsOfEyes)]
-  },
-  {
-    name: wizardsName[randomNumber(wizardsName)] + ' ' + wizardsSurname[randomNumber(wizardsSurname)],
-    coatColor: coatsColor[randomNumber(coatsColor)],
-    eyesColor: colorsOfEyes[randomNumber(colorsOfEyes)]
-  },
-  {
-    name: wizardsName[randomNumber(wizardsName)] + ' ' + wizardsSurname[randomNumber(wizardsSurname)],
-    coatColor: coatsColor[randomNumber(coatsColor)],
-    eyesColor: colorsOfEyes[randomNumber(colorsOfEyes)]
-  },
-];
+var getRandomItem = function (arr) {
+  return arr[getRandomNumber(0, arr.length)];
+};
+
+var creatWizard = function () {
+  var newWizard = {
+    name: getRandomItem(wizardsName) + ' ' + getRandomItem(wizardsSurname),
+    coatColor: getRandomItem(coatsColor),
+    eyesColor: getRandomItem(colorsOfEyes)
+  };
+  return newWizard;
+};
+
+var wizards = [];
+
+for (var wiz = 0; wiz < WIZARDS_MAX; wiz++) {
+  wizards.push(creatWizard());
+}
 
 userSetup.querySelector('.setup-similar').classList.remove('hidden');
 
@@ -60,6 +58,7 @@ similarListElement.appendChild(fragment);
 // Events
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = userSetup.querySelector('.setup-close');
+var userNameInput = userSetup.querySelector('.setup-user-name');
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
 
@@ -96,5 +95,26 @@ setupClose.addEventListener('click', function () {
 setupClose.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
+  }
+});
+
+userNameInput.addEventListener('invalid', function () {
+  if (userNameInput.validity.tooShort) {
+    userNameInput.setCustomValidity('Wizard\'s name must be at least two characters');
+  } else if (userNameInput.validity.tooLong) {
+    userNameInput.setCustomValidity('Wizard\'s name must be maximum twenty five characters');
+  } else if (userNameInput.validity.valueMissing) {
+    userNameInput.setCustomValidity('Required field');
+  } else {
+    userNameInput.setCustomValidity(' ');
+  }
+});
+
+userNameInput.addEventListener('input', function (evt) {
+  var target = evt.target;
+  if (target.value.length < 2) {
+    target.setCustomValidity('Wizard\'s name must be at least two characters');
+  } else {
+    target.setCustomValidity(' ');
   }
 });
