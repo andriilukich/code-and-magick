@@ -61,6 +61,10 @@ var setupClose = userSetup.querySelector('.setup-close');
 var userNameInput = userSetup.querySelector('.setup-user-name');
 var ESC_KEYCODE = 27;
 var ENTER_KEYCODE = 13;
+var setupCoords = {
+  x: 50,
+  y: 80
+};
 
 var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) {
@@ -75,6 +79,8 @@ var openPopup = function () {
 
 var closePopup = function () {
   userSetup.classList.add('hidden');
+  userSetup.style.left = setupCoords.x + '%';
+  userSetup.style.top = setupCoords.y + 'px';
   document.removeEventListener('keydown', onPopupEscPress);
 };
 
