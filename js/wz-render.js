@@ -44,20 +44,4 @@
     }
     similarListElement.appendChild(fragment);
   })();
-  // var rndrWz = function (wzAr) {
-  //   var fragment = document.createDocumentFragment();
-
-  //   for (var i = 0; i < wzAr.length; i++) {
-  //     var wizardElement = similarWizardsTemplate.cloneNode(true);
-
-  //     wizardElement.querySelector('.setup-similar-label').textContent = wzAr[i].name;
-  //     wizardElement.querySelector('.wizard-coat').style.fill = wzAr[i].coatColor;
-  //     wizardElement.querySelector('.wizard-eyes').style.fill = wzAr[i].eyesColor;
-
-  //     fragment.appendChild(wizardElement);
-  //   }
-  //   similarListElement.appendChild(fragment);
-  // };
-
-  // rndrWz(wizards);
 })();
