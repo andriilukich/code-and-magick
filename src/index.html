@@ -81,10 +81,14 @@
           <input type="file" name="avatar">
         </div>
         <label>
-          <input type="text" name="username"
-                 min="2" max="25" required
-                 class="setup-user-name" value="Синий Пендальф"/>
+          <input type="text"
+            name="username"
+            minlength="2"
+            maxlength="25"
+            required
+            class="setup-user-name" value="Синий Пендальф"/>
         </label>
+        <p class="setup-user__error-message"></p>
       </div>
 
       <span class="setup-close" tabindex="0">&times;</span>
@@ -201,10 +205,12 @@
     return height * 2 / 3;
   };
 </script>
-<script src="js/global-data.js"></script>
-<script src="js/wz-render.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/backend.js"></script>
+<script src="js/wzs-render.js"></script>
 <script src="js/op-cl-setup.js"></script>
 <script src="js/form-validator.js"></script>
+<script src="js/from-submit.js"></script>
 <script src="js/wz-view-change.js"></script>
 <script src="js/setup-drag.js"></script>
 <script src="js/stat.js"></script>

@@ -1,7 +1,7 @@
 'use strict';
 
 (function () {
-  var userSetup = window.globalData.userSetup;
+  var userSetup = document.querySelector('.setup');
   var userAvatarEl = userSetup.querySelector('.upload');
 
   userAvatarEl.addEventListener('mousedown', function (downEvt) {

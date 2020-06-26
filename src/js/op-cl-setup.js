@@ -1,12 +1,12 @@
 'use strict';
 
 (function () {
-  var setupOpen = document.querySelector('.setup-open');
-  var setupClose = document.querySelector('.setup-close');
-  var userSetup = window.globalData.userSetup;
-  var ESC_KEYCODE = 27;
-  var ENTER_KEYCODE = 13;
-  var setupCoords = {
+  const setupOpen = document.querySelector('.setup-open');
+  const userSetup = document.querySelector('.setup');
+  const setupClose = userSetup.querySelector('.setup-close');
+  const ESC_KEYCODE = 27;
+  const ENTER_KEYCODE = 13;
+  const setupCoords = {
     x: 50,
     y: 80
   };
