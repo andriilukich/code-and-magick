@@ -13,15 +13,22 @@
   var fireballSetup = playerSetup.querySelector('.setup-fireball-wrap');
   var getRandomItem = window.utils.getRandomItem;
 
+  var randomColor;
   coatSetup.addEventListener('click', function () {
-    coatSetup.style.fill = getRandomItem(WZ_COLOR.coatClr);
+    randomColor = getRandomItem(WZ_COLOR.coatClr);
+    coatSetup.style.fill = randomColor;
+    window.wizard.onCoatChange(randomColor);
   });
 
   eyeSetup.addEventListener('click', function () {
-    eyeSetup.style.fill = getRandomItem(WZ_COLOR.eyeClr);
+    randomColor = getRandomItem(WZ_COLOR.eyeClr);
+    eyeSetup.style.fill = randomColor;
+    window.wizard.onEyeChange(randomColor);
   });
 
   fireballSetup.addEventListener('click', function () {
-    fireballSetup.style.backgroundColor = getRandomItem(WZ_COLOR.frballClr);
+    randomColor = getRandomItem(WZ_COLOR.frballClr);
+    fireballSetup.style.backgroundColor = randomColor;
+    window.wizard.onFireBChange(randomColor);
   });
 })();
